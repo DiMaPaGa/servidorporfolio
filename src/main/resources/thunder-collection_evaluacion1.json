@@ -1,0 +1,289 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "evaluacion1",
+    "collectionId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+    "dateExported": "2024-11-14T15:50:18.848Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "c1e1e88c-d097-4fea-89cb-056edaa134e4",
+            "colId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+            "containerId": "",
+            "name": "GET  /projects",
+            "url": "http://localhost:8080/api/v1/projects?page=0&size=10",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-11-14T05:26:27.253Z",
+            "modified": "2024-11-14T13:18:04.672Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "page",
+                    "value": "0",
+                    "isPath": false
+                },
+                {
+                    "name": "size",
+                    "value": "10",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "333c5636-e46d-4427-96d7-a8275a2a1f05",
+            "colId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+            "containerId": "",
+            "name": "GET /projects/{word}",
+            "url": "http://localhost:8080/api/v1/projects/{word}",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-11-14T05:29:01.507Z",
+            "modified": "2024-11-14T11:18:45.494Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "word",
+                    "value": "proyecto",
+                    "isPath": true
+                }
+            ]
+        },
+        {
+            "_id": "8ccdac0c-68c9-4b38-9876-f3193bb1d363",
+            "colId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+            "containerId": "",
+            "name": "GET  /projects Copy",
+            "url": "http://localhost:8080/api/v1/projects",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-11-14T15:00:24.346Z",
+            "modified": "2024-11-14T15:15:20.353Z",
+            "headers": []
+        },
+        {
+            "_id": "751bd249-93e6-4ce4-bec8-62fb2f748543",
+            "colId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+            "containerId": "",
+            "name": "POST /projects",
+            "url": "http://localhost:8080/api/v1/projects",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-11-14T05:31:28.381Z",
+            "modified": "2024-11-14T14:41:06.906Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"projectName\": \"Nuevo Proyecto 31\",\n  \"description\": \"Proyecto de ejemplo\",\n  \"startDate\": \"2024-11-13\",\n  \"endDate\": \"2025-11-13\",\n  \"repositoryUrl\": \"https://github.com/proyecto\",\n  \"demoUrl\": \"https://proyecto.demo\",\n  \"picture\": \"https://imagen.com/proyecto.png\",\n  \"statusName\": \"Testing\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "b07bfd32-9c27-4570-86f4-97bf01cf16d8",
+            "colId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+            "containerId": "",
+            "name": "PUT /Projects/{id}",
+            "url": "http://localhost:8080/api/v1/projects/{id}",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2024-11-14T06:22:42.406Z",
+            "modified": "2024-11-14T15:28:58.022Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "4",
+                    "isPath": true
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"projectName\": \"Nuevo Proyecto 37\",\n  \"description\": \" \",\n  \"startDate\": \"2024-11-12\",\n  \"endDate\": \"2024-11-15\",\n  \"repositoryUrl\": \"https://github.com/pr\",\n  \"demoUrl\": \"https://proyecto.demos\",\n  \"picture\": \"https://imagen.com/proyectoxxx.png\",\n  \"statusName\": \"In development\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "d2e8798d-a5ec-4385-880d-a0e7c62b9cbd",
+            "colId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+            "containerId": "",
+            "name": "DELETE /projects/{id}",
+            "url": "http://localhost:8080/api/v1/projects/{id}",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2024-11-14T06:28:50.734Z",
+            "modified": "2024-11-14T14:41:31.212Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "21",
+                    "isPath": true
+                }
+            ]
+        },
+        {
+            "_id": "7a4cd42c-4c76-466c-9cbd-9de91f812f82",
+            "colId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+            "containerId": "",
+            "name": "POST /developers",
+            "url": "http://localhost:8080/api/v1/developers",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-11-14T06:32:45.337Z",
+            "modified": "2024-11-14T14:41:55.984Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"devName\": \"LydiaX\",\n  \"devSurname\": \"Pascual GarcíaX\",\n  \"email\": \"diapasgar123X@gmail.com\",\n  \"linkedinUrl\": \"https://linkedin.com/dLydiapascual1X\",\n  \"githubUrl\": \"https://github.com/dlypaga1X\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "eca03f47-c300-4be9-8792-674a5620c47c",
+            "colId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+            "containerId": "",
+            "name": "DELETE /developers/{id}",
+            "url": "http://localhost:8080/api/v1/developers/{id}",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2024-11-14T06:50:28.014Z",
+            "modified": "2024-11-14T14:42:27.158Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "16",
+                    "isPath": true
+                }
+            ]
+        },
+        {
+            "_id": "5405876c-9948-4a36-a1cd-ca8a723db62c",
+            "colId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+            "containerId": "",
+            "name": "POST /technologies",
+            "url": "http://localhost:8080/api/v1/technologies",
+            "method": "POST",
+            "sortNum": 90000,
+            "created": "2024-11-14T06:51:46.389Z",
+            "modified": "2024-11-14T12:21:38.058Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"techName\": \"PHP\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "fef5bcf2-2613-4eb7-a632-d1df741df96a",
+            "colId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+            "containerId": "",
+            "name": "Delete /technologies/{id}",
+            "url": "http://localhost:8080/api/v1/technologies/{id}",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2024-11-14T06:54:11.695Z",
+            "modified": "2024-11-14T14:42:59.508Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "9",
+                    "isPath": true
+                }
+            ]
+        },
+        {
+            "_id": "e79e0112-c3f6-466f-b82a-02dfc2305158",
+            "colId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+            "containerId": "",
+            "name": "POST /api/v1/technologies/used",
+            "url": "http://localhost:8080/api/v1/technologies/used",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2024-11-14T06:55:29.751Z",
+            "modified": "2024-11-14T14:43:25.614Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"projectId\": 8,\r\n  \"techId\": 9\r\n}\r\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "def53289-1e9c-4645-a538-a9f8de270e2e",
+            "colId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+            "containerId": "",
+            "name": "POST /api/v1/developers/worked",
+            "url": "http://localhost:8080/api/v1/developers/worked",
+            "method": "POST",
+            "sortNum": 120000,
+            "created": "2024-11-14T06:57:46.415Z",
+            "modified": "2024-11-14T12:38:01.171Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"projectId\": 4,\r\n  \"devId\": 2\r\n}\r\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "98a2a535-1179-49c3-b6e6-1dc996daa40f",
+            "colId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+            "containerId": "",
+            "name": "GET /api/v1/projects/tec/{tech}",
+            "url": "http://localhost:8080/api/v1/projects/tec/{tech}",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2024-11-14T07:01:51.198Z",
+            "modified": "2024-11-14T13:20:01.635Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "tech",
+                    "value": "html",
+                    "isPath": true
+                }
+            ]
+        },
+        {
+            "_id": "872509df-05f0-4f57-9dcf-b49c0865b1dc",
+            "colId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+            "containerId": "",
+            "name": "PATCH /api/v1/projects/totesting",
+            "url": "http://localhost:8080/api/v1/projects/{id}/totesting",
+            "method": "PATCH",
+            "sortNum": 150000,
+            "created": "2024-11-14T07:06:49.001Z",
+            "modified": "2024-11-14T14:43:50.250Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "2",
+                    "isPath": true
+                }
+            ]
+        },
+        {
+            "_id": "3f1991f1-ba8e-478d-9117-be456f2b8b69",
+            "colId": "5d1bb9a7-1cb8-41ee-90ef-787bba72527d",
+            "containerId": "",
+            "name": "PATCH /API/V1/PROJECTS/TOPROD",
+            "url": "http://localhost:8080/api/v1/projects/{id}/toprod",
+            "method": "PATCH",
+            "sortNum": 160000,
+            "created": "2024-11-14T07:09:35.642Z",
+            "modified": "2024-11-14T14:44:00.814Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "2",
+                    "isPath": true
+                }
+            ]
+        }
+    ],
+    "ref": "Mr1_6cNwJcROW2D8c70Szb5CxC77wGsoymvWm8XPfBLG-xd6LLUfI3ZMq_9VHW18hc7mPk7oEtDtVjwRsQBNkg"
+}
