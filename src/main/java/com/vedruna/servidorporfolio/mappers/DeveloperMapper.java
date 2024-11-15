@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
+
 import com.vedruna.servidorporfolio.dto.DeveloperDTO;
 import com.vedruna.servidorporfolio.persistance.models.Developer;
 import com.vedruna.servidorporfolio.persistance.models.Project;
@@ -51,7 +52,7 @@ public Developer developerDTOToDeveloper(DeveloperDTO developerDTO) {
     developer.setLinkedinUrl(developerDTO.getLinkedinUrl());
     developer.setGithubUrl(developerDTO.getGithubUrl());
 
-    // La lista de proyectos se maneja en el servicio, ya que requerirá cargar entidades Project
+    
     return developer;
 }
 
@@ -72,6 +73,6 @@ public void updateDeveloperFromDTO(DeveloperDTO developerDTO, Developer develope
     if (developerDTO.getGithubUrl() != null) {
         developer.setGithubUrl(developerDTO.getGithubUrl());
     }
-    // La lista de proyectos no se actualiza aquí; se gestiona en el servicio
+    
 }
 }

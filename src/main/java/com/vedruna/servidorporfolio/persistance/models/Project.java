@@ -1,7 +1,7 @@
 package com.vedruna.servidorporfolio.persistance.models;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -37,10 +37,10 @@ public class Project implements Serializable{
     private String description;
 
     @Column(name = "start_date", nullable = true)
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date", nullable = true)
-    private Date endDate;
+    private LocalDate endDate;
 
     @Column(name = "repository_url", length = 255, nullable = true)
     private String repositoryUrl;
