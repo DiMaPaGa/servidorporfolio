@@ -128,3 +128,15 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 INSERT INTO `portfolio`.`status` VALUES (1, "In Development");
 INSERT INTO `portfolio`.`status` VALUES (2, "Testing");
 INSERT INTO `portfolio`.`status` VALUES (3, "In Production");
+
+-- Eliminar la clave foránea actual
+ALTER TABLE `portfolio`.`developers_worked_on_projects`
+  DROP FOREIGN KEY `fk_developers_has_projects_projects1`;
+
+-- Agregar la nueva clave foránea con ON DELETE CASCADE
+ALTER TABLE `portfolio`.`developers_worked_on_projects`
+  ADD CONSTRAINT `fk_developers_has_projects_projects1`
+  FOREIGN KEY (`projects_project_id`)
+  REFERENCES `portfolio`.`projects` (`project_id`)
+  ON DELETE CASCADE
+  ON UPDATE NO ACTION;

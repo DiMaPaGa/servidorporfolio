@@ -58,7 +58,7 @@ public class Project implements Serializable{
     @ManyToMany(mappedBy = "projectsByDeveloper", fetch = FetchType.LAZY)
     private List<Developer> developers;
 
-    @ManyToMany(mappedBy = "projectsByTechnology", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "projectsByTechnology", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<Technology> technologies;
 
     

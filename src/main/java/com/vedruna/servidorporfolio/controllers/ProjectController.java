@@ -4,7 +4,6 @@ package com.vedruna.servidorporfolio.controllers;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +22,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -45,6 +45,7 @@ import lombok.AllArgsConstructor;
 @Tag(name = "Project", description = "Endpoints for managing operations related to projects")
 @RestController
 @AllArgsConstructor
+@CrossOrigin
 @RequestMapping("/api/v1/projects")
 public class ProjectController {
 
@@ -104,8 +105,7 @@ public class ProjectController {
     
             // Revisar errores globales, que son los de la validación personalizada
             bindingResult.getGlobalErrors().forEach(globalError -> {
-                System.out.println("Global Error: " + globalError.getDefaultMessage());
-                // Si hay un error global (por ejemplo, la validación personalizada de fechas)
+                
                 errors.put("global", globalError.getDefaultMessage());
             });
     
