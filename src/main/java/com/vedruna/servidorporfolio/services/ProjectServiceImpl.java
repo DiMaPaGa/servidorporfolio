@@ -29,6 +29,10 @@ import com.vedruna.servidorporfolio.persistance.repositories.TechnologyRepositor
 
 import lombok.AllArgsConstructor;
 
+/**
+* Implementación del servicio de gestión de proyectos.
+ * Maneja la lógica de negocio para operaciones relacionadas con los proyectos.
+ */
 @Service
 @AllArgsConstructor
 public class ProjectServiceImpl implements ProjectServiceI {
@@ -40,8 +44,12 @@ public class ProjectServiceImpl implements ProjectServiceI {
     private final DeveloperRepository developerRepo;
     private final ProjectMapper projectMapper;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Page<ProjectDTO> getAllProjects(Pageable pageable) {
+        // Obtiene una lista paginada de todos los proyectos con sus desarrolladores y tecnologías asociadas.
         Page<Project> projects = projectRepo.findAll(pageable);
         return projects.map(project -> {
             ProjectDTO projectDTO = projectMapper.projectToProjectDTO(project);
@@ -62,15 +70,23 @@ public class ProjectServiceImpl implements ProjectServiceI {
         });
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Page<ProjectDTO> getProjectsByNameContaining(String word, Pageable pageable) {
+        // Busca proyectos por palabra clave en el nombre y los convierte a DTOs.
         Page<Project> projects = projectRepo.findByProjectNameContaining(word, pageable);
         return projects.map(projectMapper::projectToProjectDTO); // Convertir entidades a DTOs
     }
 
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ProjectDTO saveProject(ProjectDTO projectDTO) {
+        // Crea un nuevo proyecto a partir del DTO y lo guarda en la base de datos.
         Project project = new Project();
         project.setProjectName(projectDTO.getProjectName());
         project.setDescription(projectDTO.getDescription());
@@ -99,6 +115,11 @@ public class ProjectServiceImpl implements ProjectServiceI {
 
         return savedProjectDTO;
     }
+
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ProjectDTO updateProject(Integer projectId, ProjectDTO projectDTO) {
         // Verificar si el proyecto existe
@@ -116,24 +137,41 @@ public class ProjectServiceImpl implements ProjectServiceI {
     }
 
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<Project> deleteProject(Integer projectId) {
+        // Elimina un proyecto por su ID, si existe.
         Optional<Project> project = projectRepo.findById(projectId);
         if (project.isPresent()) {
             projectRepo.delete(project.get());
         } return project;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void moveProjectToTesting(Integer projectId) {
         updateProjectStatus(projectId, "Testing");
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void moveProjectToProduction(Integer projectId) {
         updateProjectStatus(projectId, "Production");
     }
 
+
+    /**
+     * Actualiza el estado de un proyecto al estado especificado.
+     * 
+     * @param projectId El ID del proyecto.
+     * @param statusName El nombre del nuevo estado.
+     */
     private void updateProjectStatus(Integer projectId, String statusName) {
         Project project = projectRepo.findById(projectId)
                 .orElseThrow(() -> new ProjectNotFoundException ("Project with ID " + projectId + " not found."));
@@ -146,14 +184,22 @@ public class ProjectServiceImpl implements ProjectServiceI {
     }
 
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Page<ProjectDTO> findProjectsByTechnology(String techName, Pageable pageable) {
+        // Busca proyectos por tecnología y los convierte a DTOs.
         Page<Project> projects = projectRepo.findProjectsByTechnology(techName, pageable);
         return projects.map(projectMapper::projectToProjectDTO); // Convertir entidades a DTOs
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void addTechnologyToProject(Integer projectId, Integer techId) {
+        // Agrega una tecnología a un proyecto
         Project project = projectRepo.findById(projectId)
                 .orElseThrow(() -> new ProjectNotFoundException ("Project with ID " + projectId + " not found."));
         
@@ -164,8 +210,12 @@ public class ProjectServiceImpl implements ProjectServiceI {
         projectRepo.save(project);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void addDeveloperToProject(Integer projectId, Integer developerId) {
+        // Asocia un desarrollador a un proyecto.
         Project project = projectRepo.findById(projectId)
                 .orElseThrow(() -> new ProjectNotFoundException("Project with ID " + projectId + " not found."));
         

@@ -18,6 +18,15 @@ import com.vedruna.servidorporfolio.persistance.repositories.TechnologyRepositor
 
 import jakarta.persistence.EntityNotFoundException;
 
+/**
+ * Clase que se encarga de realizar el mapeo entre objetos {@link Project} y {@link ProjectDTO}.
+ * Este componente convierte los objetos de la capa de persistencia (modelo) en objetos de transferencia 
+ * de datos (DTO) y viceversa, permitiendo una comunicación adecuada entre las capas de la aplicación.
+ * Además, permite la actualización de proyectos existentes a partir de un DTO.
+ * 
+ * @author [Diana Mª Pascual García]
+ * @version 1.0
+ */
 @Component
 public class ProjectMapper {
 
@@ -65,7 +74,19 @@ public ProjectDTO projectToProjectDTO(Project project) {
 
     return projectDTO;
 }
-    // Convierte un ProjectDTO a Project
+    
+
+     /**
+     * Convierte un objeto {@link ProjectDTO} en un objeto {@link Project}.
+     * 
+     * @param projectDTO El objeto {@link ProjectDTO} que se desea convertir.
+     * @param developerRepo Repositorio de {@link Developer} para obtener los desarrolladores por sus IDs.
+     * @param technologyRepo Repositorio de {@link Technology} para obtener las tecnologías por sus IDs.
+     * @param statusRepo Repositorio de {@link Status} para obtener el estado del proyecto por su nombre.
+     * @return Un objeto {@link Project} con los datos del proyecto.
+     * @throws EntityNotFoundException Si no se encuentran las entidades necesarias (desarrolladores, tecnologías).
+     * @throws StatusNotFoundException Si no se encuentra el estado correspondiente.
+     */
     public Project projectDTOToProject(ProjectDTO projectDTO,
                                       DeveloperRepository developerRepo,
                                       TechnologyRepository technologyRepo,
@@ -119,7 +140,18 @@ public ProjectDTO projectToProjectDTO(Project project) {
 
     return project;  // Devolver el proyecto con las entidades asignadas
 }
-    // Modificación del método updateProjectFromDTO en ProjectMapper para actualizar campos complejos
+    
+    /**
+     * Actualiza los datos de un proyecto existente con la información de un {@link ProjectDTO}.
+     * 
+     * @param projectDTO El objeto {@link ProjectDTO} con los nuevos datos del proyecto.
+     * @param project El objeto {@link Project} que se desea actualizar.
+     * @param statusRepo Repositorio de {@link Status} para obtener el estado del proyecto.
+     * @param developerRepo Repositorio de {@link Developer} para obtener los desarrolladores por sus IDs.
+     * @param technologyRepo Repositorio de {@link Technology} para obtener las tecnologías por sus IDs.
+     * @throws EntityNotFoundException Si no se encuentran las entidades necesarias (desarrolladores, tecnologías).
+     * @throws StatusNotFoundException Si no se encuentra el estado correspondiente.
+     */
     public void updateProjectFromDTO(ProjectDTO projectDTO, Project project, 
                                     StatusRepository statusRepo, 
                                     DeveloperRepository developerRepo, 

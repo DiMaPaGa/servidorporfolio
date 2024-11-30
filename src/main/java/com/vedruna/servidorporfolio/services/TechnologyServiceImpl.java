@@ -12,6 +12,11 @@ import com.vedruna.servidorporfolio.persistance.repositories.TechnologyRepositor
 
 import lombok.AllArgsConstructor;
 
+/**
+ * Implementación del servicio para la gestión de tecnologías.
+ * Proporciona operaciones para la creación, eliminación y asociación de tecnologías
+ * con proyectos existentes.
+ */
 @Service
 @AllArgsConstructor
 public class TechnologyServiceImpl implements TechnologyServiceI {
@@ -19,6 +24,14 @@ public class TechnologyServiceImpl implements TechnologyServiceI {
     private final ProjectRepository projectRepo;
     private final TechnologyRepository techRepo;
 
+     /**
+     * Asocia una tecnología existente a un proyecto.
+     *
+     * @param projectId El ID del proyecto al que se desea asociar la tecnología.
+     * @param techId El ID de la tecnología que se desea asociar al proyecto.
+     * @throws ProjectNotFoundException Si el proyecto con el ID proporcionado no existe.
+     * @throws TechnologyNotFoundException Si la tecnología con el ID proporcionado no existe.
+     */
     @Override
     public void addTechnologyToProject(Integer projectId, Integer techId) {
         Project project = projectRepo.findById(projectId)
@@ -36,6 +49,11 @@ public class TechnologyServiceImpl implements TechnologyServiceI {
         techRepo.save(technology);
     }
 
+    /**
+     * Crea una nueva tecnología a partir de un DTO proporcionado.
+     *
+     * @param technologyDTO El objeto DTO que contiene los datos de la tecnología a crear.
+     */
     @Override
     public void createTechnology(TechnologyDTO technologyDTO) {
         Technology technology = new Technology();
@@ -43,6 +61,12 @@ public class TechnologyServiceImpl implements TechnologyServiceI {
         techRepo.save(technology);
     }
 
+    /**
+     * Elimina una tecnología existente del sistema.
+     *
+     * @param techId El ID de la tecnología que se desea eliminar.
+     * @throws TechnologyNotFoundException Si la tecnología con el ID proporcionado no existe.
+     */
     @Override
     public void deleteTechnology(Integer techId) {
         Technology technology = techRepo.findById(techId)

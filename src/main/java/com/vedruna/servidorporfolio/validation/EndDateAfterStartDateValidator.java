@@ -4,8 +4,21 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import com.vedruna.servidorporfolio.dto.ProjectDTO;
 
+/**
+ * Validador personalizado para la anotación {@link EndDateAfterStartDate}.
+ * Se utiliza para asegurarse de que la fecha de fin de un proyecto no sea
+ * anterior a la fecha de inicio.
+ */
 public class EndDateAfterStartDateValidator implements ConstraintValidator<EndDateAfterStartDate, ProjectDTO> {
 
+    /**
+     * Valida si un {@link ProjectDTO} cumple con la regla de que la fecha de fin
+     * debe ser igual o posterior a la fecha de inicio.
+     *
+     * @param projectDTO el objeto a validar.
+     * @param context el contexto de la validación, utilizado para construir mensajes de error.
+     * @return {@code true} si el DTO es válido; {@code false} de lo contrario.
+     */
     @Override
     public boolean isValid(ProjectDTO projectDTO, ConstraintValidatorContext context) {
         if (projectDTO == null) {

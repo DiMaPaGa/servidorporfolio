@@ -33,6 +33,12 @@ public class TechnologyController {
 
     private final TechnologyServiceI technologyService;
 
+    /**
+     * Asocia una tecnología existente con un proyecto especificado.
+     *
+     * @param techrRequestDTO Objeto que contiene los IDs de proyecto y tecnología.
+     * @return Respuesta indicando éxito o fallo de la operación.
+     */
     @Operation(summary = "Add technology to a project", description = "Associates an existing technology with a specified project")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Technology added to project", 
@@ -48,6 +54,13 @@ public class TechnologyController {
     return new ResponseEntity<>(response, HttpStatus.OK);
 }
 
+
+    /**
+     * Crea una nueva tecnología en el sistema.
+     *
+     * @param technologyDTO Datos de la nueva tecnología.
+     * @return Respuesta indicando que la tecnología fue creada exitosamente.
+     */
     @Operation(summary = "Create a new technology", description = "Creates a new technology in the system")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Technology created successfully", 
@@ -62,6 +75,12 @@ public class TechnologyController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    /**
+     * Elimina una tecnología del sistema dado su ID.
+     *
+     * @param techId ID de la tecnología a eliminar.
+     * @return Respuesta indicando que la tecnología fue eliminada exitosamente.
+     */
     @Operation(summary = "Delete a technology by ID", description = "Deletes a technology from the system by its ID")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Technology deleted successfully", 

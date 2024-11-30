@@ -14,11 +14,18 @@ class URLValidatorTest {
 
     private final Validator validator;
 
+    /**
+     * Constructor que inicializa el validador de Jakarta Validation.
+     */
     URLValidatorTest() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
     }
 
+     /**
+     * Prueba de validación de URLs válidas.
+     * Verifica que una URL correctamente formada sea validada sin errores.
+     */
     @Test
     void testValidURLs() {
         // Ejemplo con una URL válida
@@ -27,6 +34,10 @@ class URLValidatorTest {
         assertTrue(violations.isEmpty());
     }
 
+    /**
+     * Prueba de validación de URLs inválidas.
+     * Verifica que una URL mal formada genere una violación de validación.
+     */
     @Test
     void testInvalidURLs() {
         // Ejemplo con una URL inválida
@@ -35,6 +46,9 @@ class URLValidatorTest {
         assertFalse(violations.isEmpty());
     }
 
+    /**
+     * Clase interna de prueba utilizada para validar URLs.
+     */
     static class TestEntity {
         @ValidURL
         private final String url;

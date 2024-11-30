@@ -42,6 +42,10 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 
+/**
+ * Controlador para gestionar operaciones relacionadas con proyectos.
+ * Proporciona endpoints para CRUD, búsqueda y manipulación del estado de proyectos.
+ */
 @Tag(name = "Project", description = "Endpoints for managing operations related to projects")
 @RestController
 @AllArgsConstructor
@@ -53,7 +57,14 @@ public class ProjectController {
     private final ProjectServiceI projectService;
     private final StatusServiceI statusService;
     private final TechnologyServiceI techService;
-    
+
+
+      /**
+     * Obtiene todos los proyectos con paginación.
+     *
+     * @param pageable Objeto que contiene información de la paginación.
+     * @return Lista paginada de proyectos con un mensaje de éxito.
+     */
     @Operation(summary = "Get all projects with pagination", description = "Returns a paginated list of all projects")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Projects fetched successfully", 
@@ -69,6 +80,13 @@ public class ProjectController {
     }
 
 
+    /**
+     * Busca proyectos que contengan una palabra clave en su nombre.
+     *
+     * @param word Palabra clave para buscar en los nombres de los proyectos.
+     * @param pageable Información de paginación.
+     * @return Proyectos encontrados con la palabra clave.
+     */
     @Operation(summary = "Search projects by name keyword", description = "Finds projects that contain a specific keyword in their name")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Projects found", 
@@ -83,7 +101,13 @@ public class ProjectController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    
+    /**
+     * Crea un nuevo proyecto en el portafolio.
+     *
+     * @param projectDTO Detalles del proyecto a crear.
+     * @param bindingResult Resultado de las validaciones.
+     * @return Proyecto creado o errores de validación.
+     */
     @Operation(summary = "Create a new project", description = "Adds a new project to the portfolio")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Project created successfully", 
@@ -120,7 +144,13 @@ public class ProjectController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-
+     /**
+     * Actualiza un proyecto existente por ID.
+     *
+     * @param id ID del proyecto a actualizar.
+     * @param projectDTO Detalles actualizados del proyecto.
+     * @return Proyecto actualizado.
+     */
     @Operation(summary = "Update an existing project", description = "Modifies an existing project by ID")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Project updated successfully", 
@@ -137,6 +167,12 @@ public class ProjectController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    /**
+     * Elimina un proyecto por ID.
+     *
+     * @param id ID del proyecto a eliminar.
+     * @return Mensaje de éxito o error si no se encuentra.
+     */
     @Operation(summary = "Delete a project", description = "Removes a project by its ID")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Project deleted successfully", 
@@ -166,6 +202,13 @@ public class ProjectController {
         }
     }
 
+
+     /**
+     * Cambia el estado de un proyecto a "Testing".
+     *
+     * @param id ID del proyecto cuyo estado se cambiará.
+     * @return Mensaje indicando que el estado se cambió exitosamente.
+     */
     @Operation(summary = "Move project to Testing status", description = "Changes a project's status to Testing")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Project moved to Testing", 
@@ -181,6 +224,12 @@ public class ProjectController {
     }
 
     
+    /**
+     * Cambia el estado de un proyecto a "En Producción".
+     *
+     * @param id ID del proyecto cuyo estado se cambiará.
+     * @return Mensaje indicando que el estado se cambió exitosamente.
+     */
     @Operation(summary = "Move project to Production status", description = "Changes a project's status to In Production")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Project moved to Testing", 
@@ -195,6 +244,14 @@ public class ProjectController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+
+     /**
+     * Añade una tecnología a un proyecto específico.
+     *
+     * @param projectId ID del proyecto al cual se añadirá la tecnología.
+     * @param techId ID de la tecnología que se añadirá.
+     * @return Mensaje de éxito indicando que la tecnología fue asociada al proyecto.
+     */
     @Operation(summary = "Add a technology to a project", description = "Associates a technology with a specific project")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Technology added to project", 
@@ -210,6 +267,14 @@ public class ProjectController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+
+    /**
+     * Obtiene proyectos que utilizan una tecnología específica con paginación.
+     *
+     * @param tech Nombre de la tecnología para buscar proyectos.
+     * @param pageable Objeto que contiene la información de paginación.
+     * @return Lista paginada de proyectos que utilizan la tecnología especificada.
+     */
     @Operation(summary = "Get projects by technology", description = "Fetches projects that use a specific technology, with pagination")
     @GetMapping("/tec/{tech}")
     @ApiResponses(value = {

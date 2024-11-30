@@ -27,7 +27,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
-
+/**
+ * Controlador para gestionar desarrolladores en el sistema de portafolio.
+ * Proporciona endpoints para crear, eliminar y asociar desarrolladores con proyectos.
+ */
 @Tag(name = "Developers", description = "Endpoints for managing developers in this portfolio")
 @RestController
 @RequestMapping("/api/v1/developers")
@@ -37,6 +40,13 @@ public class DeveloperController {
     
     private final DeveloperServiceI developerService;
 
+
+     /**
+     * Crea un nuevo desarrollador en el sistema.
+     *
+     * @param developerDTO Detalles del desarrollador que se desea crear.
+     * @return Una entidad de respuesta que contiene un mensaje de éxito y el ID del desarrollador creado.
+     */
     @Operation(
         summary = "Create a new developer",
         description = "Creates a new developer in the system",
@@ -58,7 +68,12 @@ public class DeveloperController {
 
 
 
-
+    /**
+     * Elimina un desarrollador del sistema basado en el ID proporcionado.
+     *
+     * @param devId ID del desarrollador que se desea eliminar.
+     * @return Una entidad de respuesta que contiene un mensaje de éxito.
+     */
     @Operation(
         summary = "Delete a developer by ID",
         description = "Deletes a developer from the system based on the provided developer ID",
@@ -77,6 +92,12 @@ public class DeveloperController {
     }
 
 
+    /**
+     * Asocia un desarrollador con un proyecto específico.
+     *
+     * @param developerRequestDTO Contiene los IDs del desarrollador y el proyecto a asociar.
+     * @return Una entidad de respuesta que contiene un mensaje de éxito.
+     */
     @Operation(
         summary = "Add a developer to a project",
         description = "Associates a developer with a specific project",
